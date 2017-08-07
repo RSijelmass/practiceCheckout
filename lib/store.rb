@@ -19,9 +19,7 @@ class Store
 
 	def total_price
 		@basket.items.each do |item, amount| 
-			price = calculate_price(item, amount)
-			amount % 2 == 0 ? (reduction = amount / 2) : (reduction = 0)
-			@total_price += price * (amount - reduction)
+			add_to_total(item, amount)
 		end
 		@total_price
 	end
@@ -38,5 +36,15 @@ class Store
 	
 	def calculate_price(item, amount) 
 	  item == :tshirt && amount > 2 ? (return 1900) : (return ITEM_LIST[item])
+	end
+	
+	def calculate_reduction(amount)
+		amount % 2 == 0 ? (return amount / 2) : (return 0)
+	end
+
+	def add_to_total(item, amount)
+			price  = calculate_price(item, amount)
+			reduction = calculate_reduction(amount)
+@total_price += price * (amount - reduction)
 	end
 end
