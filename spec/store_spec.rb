@@ -32,5 +32,16 @@ describe Store do
 			expect(store.total_price).to eq 1250
 		end
 	end
+
+	describe 'handles special promotions' do
+		it 'gives a 2-for-1 offer on vouchers' do
+			6.times { store.scan(:voucher) }
+			expect(store.total_price).to eq 1500
+		end
+		it 'gives a discount on tshirts of €19 each if 3 or more bought' do
+			3.times { store.scan(:tshirt) }
+			expect(store.total_price).to eq 5700
+		end
+	end
 end
 

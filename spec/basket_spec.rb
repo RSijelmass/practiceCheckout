@@ -9,10 +9,14 @@ describe Basket do
 		end
 	end
 
-	describe '#total_price' do
-		it 'gives the total price of an empty basket as 0' do
-			expect(basket.total_price).to eq 0
-		end
-	end
+#	describe '#total_price' do
+#		it 'gives the total price of an empty basket as 0' do
+#			expect(basket.total_price).to eq 0
+#		end
+	#it 'gives the total price of a basket after one item is put in' do
+	#		basket.input(:tshirt)
+	#		expect(basket.total_price).to eq 2000
+	#	end
+#end
 
 end
