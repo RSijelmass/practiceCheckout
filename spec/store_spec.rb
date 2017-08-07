@@ -18,5 +18,19 @@ describe Store do
 		end
 	end
 
+	describe 'gives total price in basket' do
+		it 'gives 0 if basket is empty' do
+			expect(store.total_price).to eq 0
+		end
+		it 'gives the price if one item has been scanned' do
+			store.scan(:voucher)
+			expect(store.total_price).to eq 500
+		end
+		it 'gives the total price if more than one item has been scanned' do
+			store.scan(:voucher)
+			store.scan(:mug)
+			expect(store.total_price).to eq 1250
+		end
+	end
 end
 
