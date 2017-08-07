@@ -5,6 +5,7 @@ class Store
 	}
 
 	def scan(item)
+		raise 'Item is not in the store!' unless ITEMS[item]
 		ITEMS[item]
 	end
 
